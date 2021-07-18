@@ -1,0 +1,2 @@
+import appendVariables from './createEquation';
+
