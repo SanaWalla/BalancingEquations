@@ -4,42 +4,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../src/style/main.css">
     <title>Balancing Equations</title>
 </head>
 
 <body>
-    <div class="equationWrapper">
 
-        <div class="equationValue">
-            <p id="num1A" class="num"></p>
+    <div class="app">
+        <div class="hud">
+            <div class="score-wrapper">
+                <div class="score" id="score">
+                    <span>SCORE: </span><span>1000</span>
+                </div>
+            </div>
+            <div class="time-wrapper">
+                <div class="time" id="time">
+                    <span>Time:</span>
+                    <span>1</span>:<span>00</span>
+                </div>
+            </div>
         </div>
-
-        <div class="equationValue">
-            <p id="operation1" class="operation"></p>
-        </div>
-
-        <div class="equationValue">
-            <p id="num1B" class="num"></p>
-        </div>
-
-        <div class="equationValue equals">
-            <p class="equalSign">=</p>
-        </div>
-
-        <div class="equationValue">
-            <p id="num2A" class="num"></p>
-        </div>
-
-        <div class="equationValue">
-            <p id="operation2" class="operation"></p>
-        </div>
-
-        <div class="equationValue">
-            <p id="num2B" class="num"></p>
-        </div>
-
+    
+        <section class="game-wrapper">
+            <div class="game-left">
+                <div class="game-left-top">
+                    <div class="equation-wrapper">
+                        <div class="equation-value">
+                            <p id="num1A" class="num"></p>
+                        </div>
+                        <div class="equation-value">
+                            <p id="operation1" class="operation"></p>
+                        </div>
+                        <div class="equation-value">
+                            <p id="num1B" class="num"></p>
+                        </div>
+                        <div class="equation-value equals">
+                            <p class="equal-sign">=</p>
+                        </div>
+                        <div class="equation-value">
+                            <p id="num2A" class="num"></p>
+                        </div>
+                        <div class="equation-value">
+                            <p id="operation2" class="operation"></p>
+                        </div>
+                        <div class="equation-value">
+                            <p id="num2B" class="num"></p>
+                        </div>
+                    </div>
+                    <div class="buttons-wrapper">
+                        <div class="btn" id="submit">Submit</div>
+                        <div class="btn" id="undo">Undo</div>
+                    </div>
+                </div>
+                <div class="game-left-bottom">
+                    <div class="tiles-wrapper" id="tiles"></div>
+                </div>
+            </div>
+            <div class="game-right">
+                <div class="avatar-wrapper">
+                    <div class="avatar" id="avatar"></div>
+                </div>
+            </div>
+        </section>
     </div>
+    
+    
 
     <script src="main.js"></script>
 </body>
