@@ -1,0 +1,19 @@
+@import 'config';
+@import 'hud';
+@import 'game';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  letter-spacing: 1px;
+}
+
+.app {
+  width: 100%;
+  max-width: 1264px;
+}

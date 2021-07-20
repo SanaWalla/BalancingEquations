@@ -1,0 +1,225 @@
+.hud {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 4rem;
+  padding: 0 4rem;
+}
+
+.game-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 100%;
+  padding: 0 4rem;
+}
+
+.game-wrapper .game-left {
+  width: 60%;
+}
+
+.game-wrapper .game-left .game-left-top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.game-wrapper .game-left .game-left-top .equation-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 4rem;
+  width: 100%;
+  margin: 3rem 0;
+}
+
+.game-wrapper .game-left .game-left-top .equation-wrapper .equation-value {
+  border: 1px solid #974dff;
+  border-radius: 12px;
+  height: 4rem;
+  width: calc(14% - (0.25rem));
+}
+
+.game-wrapper .game-left .game-left-top .equation-wrapper .equation-value p {
+  text-align: center;
+}
+
+.game-wrapper .game-left .game-left-top .equation-wrapper .equals {
+  border: none;
+}
+
+.game-wrapper .game-left .game-left-top .buttons-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 8rem;
+  margin-left: 1.25rem;
+  height: 4rem;
+}
+
+.game-wrapper .game-left .game-left-top .buttons-wrapper .btn {
+  text-align: center;
+  width: 100%;
+  padding: 0.15rem 0;
+  border: 1px solid #974dff;
+  border-radius: 12px;
+  -webkit-box-shadow: 0px 0px 8px #4a4a4a4d;
+          box-shadow: 0px 0px 8px #4a4a4a4d;
+  -webkit-transition: color 0.5s, background-color 0.5s, -webkit-transform 0.5s;
+  transition: color 0.5s, background-color 0.5s, -webkit-transform 0.5s;
+  transition: color 0.5s, background-color 0.5s, transform 0.5s;
+  transition: color 0.5s, background-color 0.5s, transform 0.5s, -webkit-transform 0.5s;
+}
+
+.game-wrapper .game-left .game-left-top .buttons-wrapper .btn:first-of-type {
+  color: #974dff;
+}
+
+.game-wrapper .game-left .game-left-top .buttons-wrapper .btn:first-of-type:hover {
+  cursor: pointer;
+  color: #ffffff;
+  background-color: #974dff;
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+}
+
+.game-wrapper .game-left .game-left-top .buttons-wrapper .btn:nth-of-type(2) {
+  color: #ffffff;
+  background-color: #974dff;
+  -webkit-transition: color 0.5s, -webkit-transform 0.5s;
+  transition: color 0.5s, -webkit-transform 0.5s;
+  transition: color 0.5s, transform 0.5s;
+  transition: color 0.5s, transform 0.5s, -webkit-transform 0.5s;
+}
+
+.game-wrapper .game-left .game-left-top .buttons-wrapper .btn:nth-of-type(2):hover {
+  cursor: pointer;
+  color: #974dff;
+  background-color: #ffffff;
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+}
+
+.game-wrapper .game-left .game-left-bottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 260px;
+}
+
+.game-wrapper .game-left .game-left-bottom .tiles-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+
+.game-wrapper .game-left .game-left-bottom .tiles-wrapper .tile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: calc(20% - (0.25rem * 2));
+  height: calc(33.33% - 0.25rem * 2);
+  text-align: center;
+  background-color: #974dff;
+  color: #ffffff;
+  border-radius: 12px;
+  -webkit-box-shadow: 2px 2px 12px #4a4a4a4d;
+          box-shadow: 2px 2px 12px #4a4a4a4d;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
+}
+
+.game-wrapper .game-left .game-left-bottom .tiles-wrapper .tile:hover {
+  cursor: pointer;
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+}
+
+.game-wrapper .game-right {
+  width: 40%;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  letter-spacing: 1px;
+}
+
+.app {
+  width: 100%;
+  max-width: 1264px;
+}
+/*# sourceMappingURL=main.css.map */
