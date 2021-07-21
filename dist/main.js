@@ -1,1 +1,1 @@
-(()=>{"use strict";(()=>{const t=document.querySelector("#tiles"),e=e=>{const c=document.createElement("div");c.classList.add("tile"),c.textContent=e,t.append(c)};for(let t=0;t<15;t++)e(t)})()})();
+(()=>{"use strict";(t=>{const e=document.querySelector("#tiles"),c=t=>{const c=document.createElement("div");c.classList.add("tile"),c.textContent=t,e.append(c)};for(let e=0;e<15;e++)c(t[e])})([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14])})();
