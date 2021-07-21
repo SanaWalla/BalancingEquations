@@ -24,6 +24,9 @@
         margin: 3rem 0;
 
         .equation-value {
+          display: flex;
+          justify-content: center;
+          align-items: center;
           border: 1px solid $color-two;
           border-radius: $radius-sm;
           height: 4rem;

@@ -70,6 +70,15 @@
 }
 
 .game-wrapper .game-left .game-left-top .equation-wrapper .equation-value {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   border: 1px solid #974dff;
   border-radius: 12px;
   height: 4rem;
