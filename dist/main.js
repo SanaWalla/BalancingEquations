@@ -1,0 +1,1 @@
+(()=>{"use strict";(()=>{const t=document.querySelector("#tiles"),e=e=>{const c=document.createElement("div");c.classList.add("tile"),c.textContent=e,t.append(c)};for(let t=0;t<15;t++)e(t)})()})();
