@@ -7,7 +7,14 @@ const roundOneData = {
   right: [1, '+', '?'],
   tiles: [
     0,1,2,3,4,5,6,7,8,9,10,11,12,13,14
-  ]
+  ],
+}
+const roundTwoData = {
+  left: [5, '-', '?'],
+  right: [3, '+', '?'],
+  tiles: [
+    0,1,2,3,4,5,6,7,8,9,10,11,12,13,14
+  ],
 }
 
 const DOM = Display();
@@ -25,6 +32,14 @@ DOM.activateUndoBtn(() => {
   DOM.updateEquation(roundOne.equation);
 });
 
-DOM.activateSubmitBtn(roundOne.checkEquation);
+DOM.activateSubmitBtn((e) => {
+  if (roundOne.checkEquation(e)) {
+    console.log('WINNER!');
+    // load next round
+    
+  } else {
+    console.log('Womp womp :(');
+  }
+});
 
 

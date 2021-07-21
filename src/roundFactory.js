@@ -43,11 +43,7 @@ const roundFactory = (round) => {
     const l = equation.slice(0, 3);
     const r = equation.slice(4, 7);
 
-    if (operate(...l) === operate(...r)) {
-      console.log('WINNER!');
-    } else {
-      console.log('Womp womp :(');
-    }
+    return operate(...l) === operate(...r);
   }
 
   return {
