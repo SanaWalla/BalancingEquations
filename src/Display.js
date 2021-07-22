@@ -81,9 +81,8 @@ const Display = () => {
   
   const setTime = (newTime) => {
     const min = Math.floor(newTime / 60000);
-    // Seconds is not right
-    const sec = String(newTime % 60000).padStart(2, '0');
-    timeHtml.innerHTML = `${min}:${sec}`;
+    const sec = (newTime % 60000) / 1000;
+    timeHtml.textContent = `Time: ${min}:${String(sec).padStart(2, '0')}`;
   };
   
 

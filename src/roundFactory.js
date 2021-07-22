@@ -8,7 +8,7 @@ const roundFactory = (round, time) => {
 
   // Initialize time 
   setInterval(() => {
-    time -= 1000;
+    time = time - 1000;
   }, 1000);
 
   const getTime = () => time;
