@@ -4,9 +4,6 @@ const Display = () => {
   const equationWrapper = document.querySelector('.equation-wrapper');
   const tilesHtml = document.querySelector('#tiles');
   const btnsWrapper = document.querySelector('.buttons-wrapper');
-  const undoBtn = document.querySelector('#undo');
-  const submitBtn = document.querySelector('#submit');
-  const avatarWrapper = document.querySelector('.game-right');
   const scoreHtml = document.querySelector('#score');
   const timeHtml = document.querySelector('#time');
 
