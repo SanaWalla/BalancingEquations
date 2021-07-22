@@ -1,12 +1,14 @@
 const Display = () => {
+  const gameUI = document.querySelector('.game-left');
   const equationWrapper = document.querySelector('.equation-wrapper');
+  const tilesHtml = document.querySelector('#tiles');
   const undoBtn = document.querySelector('#undo');
   const submitBtn = document.querySelector('#submit');
   
   const valuesHtml = document.querySelectorAll('.value');
 
   const renderTiles = ((tiles, event, action) => {
-    const tilesHtml = document.querySelector('#tiles');
+    
   
     const createTile = (content, index, event, action) => {
       const tile = document.createElement('div');
@@ -41,20 +43,25 @@ const Display = () => {
       createValue(equation[i], i);
     }
 
-  }
+  };
 
   const updateEquation = (equation) => {
     equationWrapper.innerHTML = '';
 
     renderEquation(equation);
-  }
+  };
 
   const activateSubmitBtn = (action) => {
     submitBtn.addEventListener('click', action);
-  }
+  };
 
   const activateUndoBtn = (action) => {
     undoBtn.addEventListener('click', action);
+  };
+
+  const resetGameUI = () => {
+    equationWrapper.innerHTML = '';
+    tilesHtml.innerHTML = '';
   }
   
 
@@ -64,6 +71,7 @@ const Display = () => {
     updateEquation,
     activateSubmitBtn,
     activateUndoBtn,
+    resetGameUI,
   }
 };
 
