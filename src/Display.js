@@ -4,6 +4,7 @@ const Display = () => {
   const undoBtn = document.querySelector('#undo');
   const submitBtn = document.querySelector('#submit');
   const scoreHtml = document.querySelector('#score');
+  const timeHtml = document.querySelector('#time');
 
   const renderTiles = ((tiles, event, action) => {
 
@@ -65,6 +66,13 @@ const Display = () => {
     scoreHtml.innerHTML = newScore;
   };
   
+  const setTime = (newTime) => {
+    const min = Math.floor(newTime / 60000);
+    // Seconds is not right
+    const sec = String(newTime % 60000).padStart(2, '0');
+    timeHtml.innerHTML = `${min}:${sec}`;
+  };
+  
 
   return {
     renderTiles,
@@ -74,6 +82,7 @@ const Display = () => {
     activateUndoBtn,
     resetGameUI,
     setScore,
+    setTime,
   }
 };
 

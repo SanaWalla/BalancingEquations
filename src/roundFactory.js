@@ -1,11 +1,17 @@
 import operate from "./operate";
 
-const roundFactory = (round) => {
+const roundFactory = (round, time) => {
   const {left, right, tiles} = round;
   const equation = [...left, '=', ...right];
   const missingValues = getMissingValues();
   let turnCount = 0;
 
+  // Initialize time 
+  setInterval(() => {
+    time -= 1000;
+  }, 1000);
+
+  const getTime = () => time;
 
   // Return an array with the index of each missing value
   function getMissingValues() {
@@ -15,7 +21,6 @@ const roundFactory = (round) => {
     }, []);
   }
 
-  
   const getUserInput = (e) => {
     const index = e.target.dataset.index;
     return tiles[index];
@@ -49,6 +54,7 @@ const roundFactory = (round) => {
   return {
     tiles,
     equation,
+    getTime,
     updateEquation,
     undo,
     checkEquation,
