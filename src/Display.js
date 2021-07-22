@@ -1,12 +1,9 @@
 const Display = () => {
-  const gameUI = document.querySelector('.game-left');
   const equationWrapper = document.querySelector('.equation-wrapper');
   const tilesHtml = document.querySelector('#tiles');
   const undoBtn = document.querySelector('#undo');
   const submitBtn = document.querySelector('#submit');
   const scoreHtml = document.querySelector('#score');
-  
-  const valuesHtml = document.querySelectorAll('.value');
 
   const renderTiles = ((tiles, event, action) => {
 
