@@ -10,7 +10,6 @@ function runGame(data, roundCount, time) {
   DOM.resetGameUI();
   // setInterval(DOM.setTime(round.getTime()), 1000);
   
-
   DOM.setScore(roundCount * 100);
   DOM.renderEquation(round.equation);
   DOM.renderTiles(round.tiles, 'click', (e) => {
@@ -18,12 +17,7 @@ function runGame(data, roundCount, time) {
     DOM.updateEquation(round.equation);
   });
 
-  DOM.activateUndoBtn(() => {
-    round.undo();
-    DOM.updateEquation(round.equation);
-  });
-
-  DOM.activateSubmitBtn((e) => {
+  DOM.renderSubmitBtn((e) => {
     if (round.checkEquation(e) && roundCount <= roundData.length) {
       console.log('WINNER!', round.getTime());
       roundCount++;
@@ -31,6 +25,11 @@ function runGame(data, roundCount, time) {
     } else {
       console.log('Womp womp :(');
     }
+  });
+
+  DOM.renderUndoBtn(() => {
+    round.undo();
+    DOM.updateEquation(round.equation);
   });
 }
 

@@ -1,4 +1,4 @@
-import operate from "./operate";
+import { operate } from "./helperFunctions";
 
 const roundFactory = (round, time) => {
   const {left, right, tiles} = round;

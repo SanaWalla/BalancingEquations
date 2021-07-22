@@ -1,8 +1,12 @@
+import { elFactory } from "./helperFunctions";
+
 const Display = () => {
   const equationWrapper = document.querySelector('.equation-wrapper');
   const tilesHtml = document.querySelector('#tiles');
+  const btnsWrapper = document.querySelector('.buttons-wrapper');
   const undoBtn = document.querySelector('#undo');
   const submitBtn = document.querySelector('#submit');
+  const avatarWrapper = document.querySelector('.game-right');
   const scoreHtml = document.querySelector('#score');
   const timeHtml = document.querySelector('#time');
 
@@ -48,14 +52,26 @@ const Display = () => {
 
     renderEquation(equation);
   };
+ 
+  const renderSubmitBtn = (action) => {
+    if (btnsWrapper.querySelector('#submit'))
+      btnsWrapper.removeChild(btnsWrapper.querySelector('#submit'));
 
-  const activateSubmitBtn = (action) => {
+    const submitBtn = elFactory('div', {id: 'submit', class: 'btn submit'}, 'Submit');
     submitBtn.addEventListener('click', action);
-  };
+    
+    btnsWrapper.appendChild(submitBtn);
+  }
 
-  const activateUndoBtn = (action) => {
+  const renderUndoBtn = (action) => {
+    if (btnsWrapper.querySelector('#undo')) 
+      btnsWrapper.removeChild(btnsWrapper.querySelector('#undo'));
+    
+    const undoBtn = elFactory('div', {id: 'undo', class: 'btn undo'}, 'Undo');
     undoBtn.addEventListener('click', action);
-  };
+
+    btnsWrapper.appendChild(undoBtn);
+  }
 
   const resetGameUI = () => {
     equationWrapper.innerHTML = '';
@@ -78,8 +94,8 @@ const Display = () => {
     renderTiles,
     renderEquation,
     updateEquation,
-    activateSubmitBtn,
-    activateUndoBtn,
+    renderSubmitBtn,
+    renderUndoBtn,
     resetGameUI,
     setScore,
     setTime,
