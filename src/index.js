@@ -7,8 +7,9 @@ const DOM = Display();
 
 function runGame(data, roundCount) {
   const round = roundFactory(data[roundCount]);
-  
   DOM.resetGameUI();
+
+  DOM.setScore(roundCount * 100);
   DOM.renderEquation(round.equation);
   DOM.renderTiles(round.tiles, 'click', (e) => {
     round.updateEquation(e);
@@ -21,7 +22,9 @@ function runGame(data, roundCount) {
   });
 
   DOM.activateSubmitBtn((e) => {
-    if (round.checkEquation(e)) {
+    console.log(roundCount);
+    
+    if (round.checkEquation(e) && roundCount <= roundData.length) {
       console.log('WINNER!');
       roundCount++;
       runGame(data, roundCount);

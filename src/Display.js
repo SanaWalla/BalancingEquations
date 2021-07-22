@@ -4,12 +4,12 @@ const Display = () => {
   const tilesHtml = document.querySelector('#tiles');
   const undoBtn = document.querySelector('#undo');
   const submitBtn = document.querySelector('#submit');
+  const scoreHtml = document.querySelector('#score');
   
   const valuesHtml = document.querySelectorAll('.value');
 
   const renderTiles = ((tiles, event, action) => {
-    
-  
+
     const createTile = (content, index, event, action) => {
       const tile = document.createElement('div');
       tile.classList.add('tile');
@@ -62,7 +62,11 @@ const Display = () => {
   const resetGameUI = () => {
     equationWrapper.innerHTML = '';
     tilesHtml.innerHTML = '';
-  }
+  };
+
+  const setScore = (newScore) => {
+    scoreHtml.innerHTML = newScore;
+  };
   
 
   return {
@@ -72,6 +76,7 @@ const Display = () => {
     activateSubmitBtn,
     activateUndoBtn,
     resetGameUI,
+    setScore,
   }
 };
 
