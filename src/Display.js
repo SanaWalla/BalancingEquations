@@ -23,31 +23,31 @@ const Display = () => {
     }
   });
 
-  const renderEquation = (equation) => {
+  const renderEquation = (equation, inFocus) => {
+    console.log(inFocus);
     
-    const createValue = (content) => {
-      const eqValue = document.createElement('div');
-      eqValue.classList.add('equation-value');
-
+    const createValue = (content, inFocus) => {
+      const eqValue = elFactory('div', {class: 'equation-value'}, String(content));
+      
       if ( typeof content == 'string') {
         if (!content.search(/[\+\-*\/]/)) eqValue.classList.add('operator');
         if (content == '=') eqValue.classList.add('equals');
+        if (inFocus == true) eqValue.classList.add('in-focus');
       }
 
-      eqValue.textContent = content;
       equationWrapper.appendChild(eqValue);
     }
     
     for (let i = 0; i < equation.length; i++) {
-      createValue(equation[i], i);
+      createValue(equation[i], i == inFocus);
     }
 
   };
 
-  const updateEquation = (equation) => {
+  const updateEquation = (equation, inFocus) => {
     equationWrapper.innerHTML = '';
 
-    renderEquation(equation);
+    renderEquation(equation, inFocus);
   };
  
   const renderSubmitBtn = (action) => {

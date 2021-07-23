@@ -3,7 +3,7 @@ import { operate } from "./helperFunctions";
 const roundFactory = (round, time) => {
   const {left, right, tiles} = round;
   const equation = [...left, '=', ...right];
-  const missingValues = getMissingValues();
+  const missingValues = findMissingValues();
   let turnCount = 0;
 
   // Initialize time 
@@ -14,11 +14,15 @@ const roundFactory = (round, time) => {
   const getTime = () => time;
 
   // Return an array with the index of each missing value
-  function getMissingValues() {
+  function findMissingValues() {
     return equation.reduce((arr, value, i) => {
       if (value === '?') arr.push(i);
       return arr;
     }, []);
+  }
+
+  const getCurrentMissingValue = () => {
+    return missingValues[turnCount];
   }
 
   const getUserInput = (e) => {
@@ -54,6 +58,7 @@ const roundFactory = (round, time) => {
   return {
     tiles,
     equation,
+    getCurrentMissingValue,
     getTime,
     updateEquation,
     undo,

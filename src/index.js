@@ -11,15 +11,15 @@ function runGame(data, roundCount, time) {
   DOM.resetGameUI();
 
   // Set game time
-  let gameTime = setInterval(() => {
+/*   let gameTime = setInterval(() => {
     DOM.setTime(round.getTime());
-  }, 1000);
+  }, 1000); */
   
   DOM.setScore(roundCount * 100);
-  DOM.renderEquation(round.equation);
+  DOM.renderEquation(round.equation, round.getCurrentMissingValue());
   DOM.renderTiles(round.tiles, 'click', (e) => {
     round.updateEquation(e);
-    DOM.updateEquation(round.equation);
+    DOM.updateEquation(round.equation, round.getCurrentMissingValue());
   });
 
   DOM.renderSubmitBtn((e) => {
