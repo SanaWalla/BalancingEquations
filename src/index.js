@@ -1,45 +1,48 @@
 import Display from './Display';
 import roundFactory from './roundFactory';
-
-
-const roundOneData = {
-  left: [1, '+', '?'],
-  right: [1, '+', '?'],
-  tiles: [
-    0,1,2,3,4,5,6,7,8,9,10,11,12,13,14
-  ],
-}
-const roundTwoData = {
-  left: [5, '-', '?'],
-  right: [3, '+', '?'],
-  tiles: [
-    0,1,2,3,4,5,6,7,8,9,10,11,12,13,14
-  ],
-}
+import roundData from './roundData';
 
 const DOM = Display();
 
-// Initialize round
-const roundOne = roundFactory(roundOneData);
-DOM.renderEquation(roundOne.equation);
-DOM.renderTiles(roundOne.tiles, 'click', (e) => {
-  roundOne.updateEquation(e);
-  DOM.updateEquation(roundOne.equation);
-});
+function runGame(data, roundCount, time) {
+  const round = roundFactory(data[roundCount], time);
+  
+  // Clear any existing elements from prior rounds
+  DOM.resetGameUI();
 
-DOM.activateUndoBtn(() => {
-  roundOne.undo();
-  DOM.updateEquation(roundOne.equation);
-});
+  // Set game time
+  let gameTime = setInterval(() => {
+    DOM.setTime(round.getTime());
+  }, 1000);
+  
+  DOM.setScore(roundCount * 100);
+  DOM.renderEquation(round.equation, round.getCurrentMissingValue());
+  DOM.renderTiles(round.tiles, 'click', (e) => {
+    round.updateEquation(e);
+    DOM.updateEquation(round.equation, round.getCurrentMissingValue());
+  });
 
-DOM.activateSubmitBtn((e) => {
-  if (roundOne.checkEquation(e)) {
-    console.log('WINNER!');
-    // load next round
-    
-  } else {
-    console.log('Womp womp :(');
-  }
-});
+  DOM.renderSubmitBtn((e) => {
+    if (round.checkEquation(e) && roundCount <= roundData.length) {
+      roundCount++;
+      clearInterval(gameTime);
+      
+      // load the next round with current remaining time + 4 seconds
+      runGame(data, roundCount, (round.getTime() + 4000));
+    } else {
+      console.log('Womp womp :(');
+    }
+  });
+
+  DOM.renderUndoBtn(() => {
+    round.undo();
+    DOM.updateEquation(round.equation, round.getCurrentMissingValue());
+  });
+}
+
+
+runGame(roundData, 0, 60000);
+
+
 
 
