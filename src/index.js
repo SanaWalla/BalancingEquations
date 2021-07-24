@@ -11,9 +11,9 @@ function runGame(data, roundCount, time) {
   DOM.resetGameUI();
 
   // Set game time
-/*   let gameTime = setInterval(() => {
+  let gameTime = setInterval(() => {
     DOM.setTime(round.getTime());
-  }, 1000); */
+  }, 1000);
   
   DOM.setScore(roundCount * 100);
   DOM.renderEquation(round.equation, round.getCurrentMissingValue());
@@ -24,7 +24,6 @@ function runGame(data, roundCount, time) {
 
   DOM.renderSubmitBtn((e) => {
     if (round.checkEquation(e) && roundCount <= roundData.length) {
-      console.log('WINNER!');
       roundCount++;
       clearInterval(gameTime);
       
@@ -37,7 +36,7 @@ function runGame(data, roundCount, time) {
 
   DOM.renderUndoBtn(() => {
     round.undo();
-    DOM.updateEquation(round.equation);
+    DOM.updateEquation(round.equation, round.getCurrentMissingValue());
   });
 }
 

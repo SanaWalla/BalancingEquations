@@ -24,8 +24,7 @@ const Display = () => {
   });
 
   const renderEquation = (equation, inFocus) => {
-    console.log(inFocus);
-    
+
     const createValue = (content, inFocus) => {
       const eqValue = elFactory('div', {class: 'equation-value'}, String(content));
       
@@ -34,20 +33,26 @@ const Display = () => {
         if (content == '=') eqValue.classList.add('equals');
         if (inFocus == true) eqValue.classList.add('in-focus');
       }
-
+  
       equationWrapper.appendChild(eqValue);
     }
-    
+
     for (let i = 0; i < equation.length; i++) {
       createValue(equation[i], i == inFocus);
     }
-
   };
 
   const updateEquation = (equation, inFocus) => {
-    equationWrapper.innerHTML = '';
-
-    renderEquation(equation, inFocus);
+    const outputs = equationWrapper.childNodes;
+    
+    equation.forEach((value, i) => {
+      if (outputs[i].textContent != value) outputs[i].textContent = value;
+      if (i == inFocus) {
+        outputs[i].classList.add('in-focus');
+      } else {
+        outputs[i].classList.remove('in-focus');
+      }       
+    });
   };
  
   const renderSubmitBtn = (action) => {
