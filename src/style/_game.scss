@@ -111,17 +111,21 @@
           align-items: center;
           width: calc(20% - (0.25rem * 2));
           height: calc(33.33% - 0.25rem * 2);
-          //margin: 0.25rem;
+          font-family: 'Shadows Into Light', cursive;
+          font-size: 1.5rem;
           text-align: center;
-          background-color: $color-two;
-          color: $color-white;
+          //background-color: $color-two;
+          //background-image: url('../../dist/img/Tile2.svg');
+          background-size: contain;
+          color: $color-black;
           border-radius: $radius-sm;
-          box-shadow: 2px 2px 12px $color-light-black;
+          //box-shadow: 2px 2px 12px $color-light-black;
           transition: transform 0.5s;
 
           &:hover {
             cursor: pointer;
             transform: scale(0.9);
+            color: $color-two;
           }
         }
       }
@@ -130,5 +134,22 @@
 
   .game-right {
     width: 40%;
+
+    .avatar-wrapper {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      height: 100%;
+      .avatar {
+        width: 211px;
+      }
+      .pizza {
+        width: 211px;
+        position: absolute;
+        transition: transform 0.4s ease-in;
+      }
+    }
   }
 }

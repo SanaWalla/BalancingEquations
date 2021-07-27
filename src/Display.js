@@ -6,20 +6,22 @@ const Display = () => {
   const btnsWrapper = document.querySelector('.buttons-wrapper');
   const scoreHtml = document.querySelector('#score');
   const timeHtml = document.querySelector('#time');
+  const avatarWrapper = document.querySelector('.avatar-wrapper');
 
   const renderTiles = ((tiles, event, action) => {
 
-    const createTile = (content, index, event, action) => {
+    const createTile = (content, index, style, event, action) => {
       const tile = document.createElement('div');
       tile.classList.add('tile');
       tile.textContent = content;
       tile.dataset.index = index;
+      tile.style.backgroundImage = `url('../../dist/img/Tile${style}.svg')`;
       tilesHtml.appendChild(tile);
       tile.addEventListener(event, (e) => {action(e)});
     }
 
     for (let i = 0; i < tiles.length; i++) {
-      createTile(tiles[i], i, event, action);
+      createTile(tiles[i], i, Math.floor((Math.random() * 5) +1), event, action);
     }
   });
 
@@ -89,12 +91,49 @@ const Display = () => {
     const sec = (newTime % 60000) / 1000;
     timeHtml.textContent = `Time: ${min}:${String(sec).padStart(2, '0')}`;
   };
+
+  const renderAvatar = (roundCount) => {
+    /* if (avatarWrapper.querySelector('.avatar')) {
+      avatarWrapper.removeChild(avatarWrapper.querySelector('.avatar'));
+    }
+    
+    roundCount === 0 ? roundCount = 1 : roundCount; */
+    const avatar = elFactory('img', {class: 'avatar', src: `../dist/img/avatar1.png`});
+    
+    avatarWrapper.appendChild(avatar);
+  }
+
+  const addPizza = (roundCount) => {
+    const rndInt = Math.floor(Math.random() * 6) + 1
+    const pizza = elFactory('img', {class: 'pizza', src: `../dist/img/pizza${rndInt}.png`});
+    
+    
+    if (roundCount === 1) {
+      pizza.style.bottom = '136px';
+    } else {
+      pizza.style.bottom = `${136 + ((roundCount - 1) * 14)}px`;
+    }
+    avatarWrapper.appendChild(pizza);
+  };
+
+  const dropPizza = (roundCount) => {
+    const pizzas = avatarWrapper.querySelectorAll('.pizza');
+    pizzas.forEach((pizza, i) => {
+      const rndInt = Math.floor(Math.random() * 13);
+      setInterval(() => {
+        pizza.style.transform = `rotate(${rndInt}deg) translateY(${136 + (i * 14)}px)`
+      }, 900 - (i * 60)); // use roundCount to calc time to subtract from
+    });
+  };
   
 
   return {
     renderTiles,
     renderEquation,
     updateEquation,
+    renderAvatar,
+    addPizza,
+    dropPizza,
     renderSubmitBtn,
     renderUndoBtn,
     resetGameUI,

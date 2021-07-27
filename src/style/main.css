@@ -201,12 +201,12 @@
           align-items: center;
   width: calc(20% - (0.25rem * 2));
   height: calc(33.33% - 0.25rem * 2);
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 1.5rem;
   text-align: center;
-  background-color: #974dff;
-  color: #ffffff;
+  background-size: contain;
+  color: #1c1c1c;
   border-radius: 12px;
-  -webkit-box-shadow: 2px 2px 12px #4a4a4a4d;
-          box-shadow: 2px 2px 12px #4a4a4a4d;
   -webkit-transition: -webkit-transform 0.5s;
   transition: -webkit-transform 0.5s;
   transition: transform 0.5s;
@@ -217,10 +217,42 @@
   cursor: pointer;
   -webkit-transform: scale(0.9);
           transform: scale(0.9);
+  color: #974dff;
 }
 
 .game-wrapper .game-right {
   width: 40%;
+}
+
+.game-wrapper .game-right .avatar-wrapper {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+}
+
+.game-wrapper .game-right .avatar-wrapper .avatar {
+  width: 211px;
+}
+
+.game-wrapper .game-right .avatar-wrapper .pizza {
+  width: 211px;
+  position: absolute;
+  -webkit-transition: -webkit-transform 0.4s ease-in;
+  transition: -webkit-transform 0.4s ease-in;
+  transition: transform 0.4s ease-in;
+  transition: transform 0.4s ease-in, -webkit-transform 0.4s ease-in;
 }
 
 * {

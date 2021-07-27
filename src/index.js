@@ -12,10 +12,13 @@ function runGame(data, roundCount, time) {
 
   // Set game time
   let gameTime = setInterval(() => {
-    DOM.setTime(round.getTime());
+    const time = round.getTime();
+    DOM.setTime(time);
+    
   }, 1000);
   
   DOM.setScore(roundCount * 100);
+  if (roundCount === 0) DOM.renderAvatar();
   DOM.renderEquation(round.equation, round.getCurrentMissingValue());
   DOM.renderTiles(round.tiles, 'click', (e) => {
     round.updateEquation(e);
@@ -25,12 +28,14 @@ function runGame(data, roundCount, time) {
   DOM.renderSubmitBtn((e) => {
     if (round.checkEquation(e) && roundCount <= roundData.length) {
       roundCount++;
+      DOM.addPizza(roundCount);
       clearInterval(gameTime);
       
       // load the next round with current remaining time + 4 seconds
       runGame(data, roundCount, (round.getTime() + 4000));
     } else {
       console.log('Womp womp :(');
+      DOM.dropPizza();
     }
   });
 
