@@ -7,6 +7,7 @@ const Display = () => {
   const scoreHtml = document.querySelector('#score');
   const timeHtml = document.querySelector('#time');
 
+  
   const renderTiles = ((tiles, event, action) => {
 
     const createTile = (content, index, event, action) => {
@@ -22,6 +23,13 @@ const Display = () => {
       createTile(tiles[i], i, event, action);
     }
   });
+
+  const deactivateTiles = () => {
+    const tiles = tilesHtml.querySelectorAll('.tile');
+    tiles.forEach((tile) => {
+      tile.replaceWith(tile.cloneNode(true));
+    });
+  };
 
   const renderEquation = (equation, inFocus) => {
 
@@ -93,6 +101,7 @@ const Display = () => {
 
   return {
     renderTiles,
+    deactivateTiles,
     renderEquation,
     updateEquation,
     renderSubmitBtn,

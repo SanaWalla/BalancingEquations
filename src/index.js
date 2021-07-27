@@ -12,7 +12,12 @@ function runGame(data, roundCount, time) {
 
   // Set game time
   let gameTime = setInterval(() => {
-    DOM.setTime(round.getTime());
+    const time = round.getTime()
+    DOM.setTime(time);
+    if (time <= 0) {
+      gameOver(gameTime);
+      return;
+    };
   }, 1000);
   
   DOM.setScore(roundCount * 100);
@@ -30,7 +35,8 @@ function runGame(data, roundCount, time) {
       // load the next round with current remaining time + 4 seconds
       runGame(data, roundCount, (round.getTime() + 4000));
     } else {
-      console.log('Womp womp :(');
+      gameOver(gameTime);
+      return;
     }
   });
 
@@ -38,6 +44,12 @@ function runGame(data, roundCount, time) {
     round.undo();
     DOM.updateEquation(round.equation, round.getCurrentMissingValue());
   });
+}
+
+function gameOver(timer) {
+  console.log('Womp womp :(');
+  DOM.deactivateTiles();
+  clearInterval(timer);
 }
 
 
