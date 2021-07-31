@@ -15,7 +15,7 @@ const Display = () => {
       tile.classList.add('tile');
       tile.textContent = content;
       tile.dataset.index = index;
-      tile.style.backgroundImage = `url('../../dist/img/Tile${style}.svg')`;
+      tile.style.backgroundImage = `url('../../dist/img/tiles/Tile${style}.svg')`;
       tilesHtml.appendChild(tile);
       tile.addEventListener(event, (e) => {action(e)});
     }
@@ -98,14 +98,14 @@ const Display = () => {
     }
     
     roundCount === 0 ? roundCount = 1 : roundCount; */
-    const avatar = elFactory('img', {class: 'avatar', src: `../dist/img/avatar1.png`});
+    const avatar = elFactory('img', {class: 'avatar', src: `../dist/img/avatar/avatar1.png`});
     
     avatarWrapper.appendChild(avatar);
   }
 
   const addPizza = (roundCount) => {
     const rndInt = Math.floor(Math.random() * 6) + 1
-    const pizza = elFactory('img', {class: 'pizza', src: `../dist/img/pizza${rndInt}.png`});
+    const pizza = elFactory('img', {class: 'pizza', src: `../dist/img/pizza/pizza${rndInt}.png`});
     
     
     if (roundCount === 1) {
