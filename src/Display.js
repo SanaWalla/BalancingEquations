@@ -1,13 +1,18 @@
 import { elFactory } from "./helperFunctions";
 
 const Display = () => {
+  const app = document.querySelector('#app');
+  const gameLeft = document.querySelector('.game-left');
   const equationWrapper = document.querySelector('.equation-wrapper');
-  const tilesHtml = document.querySelector('#tiles');
+  const tilesWrapper = document.querySelector('#tiles');
   const btnsWrapper = document.querySelector('.buttons-wrapper');
   const scoreHtml = document.querySelector('#score');
   const timeHtml = document.querySelector('#time');
 
-  
+  const renderGameUI = () => {
+    app.appendChild(gameUI());
+  }
+
   const renderTiles = ((tiles, event, action) => {
 
     const createTile = (content, index, event, action) => {
@@ -15,7 +20,7 @@ const Display = () => {
       tile.classList.add('tile');
       tile.textContent = content;
       tile.dataset.index = index;
-      tilesHtml.appendChild(tile);
+      tilesWrapper.appendChild(tile);
       tile.addEventListener(event, (e) => {action(e)});
     }
 
@@ -85,7 +90,8 @@ const Display = () => {
 
   const resetGameUI = () => {
     equationWrapper.innerHTML = '';
-    tilesHtml.innerHTML = '';
+    btnsWrapper.innerHTML = '';
+    tilesWrapper.innerHTML = '';
   };
 
   const setScore = (newScore) => {
@@ -97,9 +103,20 @@ const Display = () => {
     const sec = (newTime % 60000) / 1000;
     timeHtml.textContent = `Time: ${min}:${String(sec).padStart(2, '0')}`;
   };
+
+  const renderPopup = (message, buttonAction) => {
+    const button = elFactory('div', {class: 'button'}, 'Play Again?');
+    const popup = elFactory('div', {class: 'popup-wrapper'}, message, button);
+    button.addEventListener('click', () => {
+       buttonAction();
+       gameLeft.removeChild(popup);
+    });
+    gameLeft.appendChild(popup);
+  }
   
 
   return {
+    renderGameUI,
     renderTiles,
     deactivateTiles,
     renderEquation,
@@ -109,6 +126,7 @@ const Display = () => {
     resetGameUI,
     setScore,
     setTime,
+    renderPopup,
   }
 };
 
