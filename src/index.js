@@ -9,7 +9,7 @@ function runGame(data, roundCount, time) {
   const round = roundFactory(data[roundCount], time);
   
   // Clear any existing elements from prior rounds
-  DOM.resetGameUI();
+  DOM.resetGameUI(false);
 
   // Set game time
   let gameTime = setInterval(() => {
@@ -22,6 +22,7 @@ function runGame(data, roundCount, time) {
   }, 1000);
   
   DOM.setScore(score);
+  DOM.renderAvatar(roundCount);
   DOM.renderEquation(round.equation, round.getCurrentMissingValue());
   DOM.renderTiles(round.tiles, 'click', (e) => {
     round.updateEquation(e);
@@ -33,6 +34,7 @@ function runGame(data, roundCount, time) {
       // Loads next round
       
       roundCount++;
+      DOM.addPizza(roundCount);
       clearInterval(gameTime);
       
       // load the next round with current remaining time + 4 seconds
@@ -40,11 +42,12 @@ function runGame(data, roundCount, time) {
     } else if(round.checkEquation(e) && roundCount == roundData.length - 1) {
       // Runs success sequence
 
+      
       gameOver('You Win! Score', gameTime, score);
       return;
     } else {
       // Runs fail sequence
-
+      DOM.dropPizza();
       gameOver('Game Over. Score', gameTime, score);
       return;
     }
@@ -58,7 +61,10 @@ function runGame(data, roundCount, time) {
 
 function gameOver(message, timer, score) {
   DOM.resetGameUI();
-  DOM.renderPopup(`${message}: ${score}`, () => {runGame(roundData, 0, 60000)});
+  DOM.renderPopup(`${message}: ${score}`, () => {
+    DOM.resetGameUI(true);
+    runGame(roundData, 0, 60000);
+  });
   clearInterval(timer);
 };
 
