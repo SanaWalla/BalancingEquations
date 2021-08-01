@@ -9,7 +9,7 @@ function runGame(data, roundCount, time) {
   const round = roundFactory(data[roundCount], time);
   
   // Clear any existing elements from prior rounds
-  DOM.resetGameUI();
+  DOM.resetGameUI(false);
 
   // Set game time
   let gameTime = setInterval(() => {
@@ -61,12 +61,14 @@ function runGame(data, roundCount, time) {
 
 function gameOver(message, timer, score) {
   DOM.resetGameUI();
-  DOM.renderPopup(`${message}: ${score}`, () => {runGame(roundData, 0, 60000)});
+  DOM.renderPopup(`${message}: ${score}`, () => {
+    DOM.resetGameUI(true);
+    runGame(roundData, 0, 60000);
+  });
   clearInterval(timer);
 };
 
 runGame(roundData, 0, 60000);
-
 
 
 

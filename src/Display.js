@@ -90,10 +90,16 @@ const Display = () => {
     btnsWrapper.appendChild(undoBtn);
   }
 
-  const resetGameUI = () => {
+  const resetGameUI = (clearPizzas = false) => {
     equationWrapper.innerHTML = '';
     btnsWrapper.innerHTML = '';
     tilesWrapper.innerHTML = '';
+    if (clearPizzas === true) {
+      const pizzas = avatarWrapper.querySelectorAll('.pizza');
+      pizzas.forEach((pizza) => {
+        avatarWrapper.removeChild(pizza);
+      });
+    };
   };
 
   const setScore = (newScore) => {
