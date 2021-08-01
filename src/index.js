@@ -18,7 +18,7 @@ function runGame(data, roundCount, time) {
   }, 1000);
   
   DOM.setScore(roundCount * 100);
-  if (roundCount === 0) DOM.renderAvatar();
+  DOM.renderAvatar(roundCount);
   DOM.renderEquation(round.equation, round.getCurrentMissingValue());
   DOM.renderTiles(round.tiles, 'click', (e) => {
     round.updateEquation(e);

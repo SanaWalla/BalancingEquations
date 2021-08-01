@@ -93,12 +93,24 @@ const Display = () => {
   };
 
   const renderAvatar = (roundCount) => {
-    /* if (avatarWrapper.querySelector('.avatar')) {
+    if (avatarWrapper.querySelector('.avatar') != undefined) {
       avatarWrapper.removeChild(avatarWrapper.querySelector('.avatar'));
     }
     
-    roundCount === 0 ? roundCount = 1 : roundCount; */
-    const avatar = elFactory('img', {class: 'avatar', src: `../dist/img/avatar/avatar1.png`});
+    roundCount === 0 ? roundCount = 1 : roundCount;
+    const avatar = elFactory('img', {
+      class: 'avatar', 
+      src: `../dist/img/avatar/avatar${1}.png`
+    });
+
+    if (roundCount < 3) 
+      avatar.src = `../dist/img/avatars/avatar${1}.png`;
+    if (roundCount < 6 && roundCount >= 3) 
+      avatar.src = `../dist/img/avatars/avatar${2}.png`;
+    if (roundCount < 9 && roundCount >= 6) 
+      avatar.src = `../dist/img/avatars/avatar${3}.png`;
+    if (roundCount >= 9)
+      avatar.src = `../dist/img/avatars/avatar${4}.png`;
     
     avatarWrapper.appendChild(avatar);
   }
