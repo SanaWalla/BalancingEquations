@@ -95,7 +95,7 @@ const Display = () => {
   const renderAvatar = (roundCount) => {
     if (avatarWrapper.querySelector('.avatar') != undefined) {
       avatarWrapper.removeChild(avatarWrapper.querySelector('.avatar'));
-    }
+    };
     
     roundCount === 0 ? roundCount = 1 : roundCount;
     const avatar = elFactory('img', {
